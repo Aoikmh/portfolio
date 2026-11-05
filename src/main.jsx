@@ -2,8 +2,20 @@ import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
   ArrowDown, ArrowLeft, ArrowRight, ExternalLink, Mail, Linkedin,
-  Phone, Play, X, Maximize2, Palette, Box, Map, Gamepad2
+  Phone, Play, X, Maximize2, Palette, Box, Map, Gamepad2, Newspaper
 } from "lucide-react";
+
+import CHKS from "../pics/CHKS.jpg";
+import CA1 from "../pics/CA1.jpg";
+import CA2 from "../pics/CA2.jpg";
+import manga1 from "../pics/manga1.jpg";
+import manga2 from "../pics/manga2.jpg";
+import interf from "../pics/interface.jpg";
+import bgcardgame from "../pics/bgcardgame.jpg";
+import cardss from "../pics/cardingamess.png";
+import dz from "../pics/dz.png";
+import KMHBC from "../pics/KMHBC.jpg";
+
 
 import stoneHavenHero from "../pics/StoneHaven.jpg";
 import StoneHavenenv from "../pics/SHenv.png";
@@ -42,12 +54,28 @@ import lumiaface from "../pics/lumiaface.png";
 import artwork from "../pics/artwork.jpg";
 import artwork2 from "../pics/artwork2.jpg";
 import artwork3 from "../pics/artwork3.jpg";
+import artwork4 from "../pics/artwork4.jpg";
+import artwork5 from "../pics/artwork5.jpg";
 
 import "./styles.css";
 
 
 const PLACEHOLDER = (label) =>
   `https://placehold.co/1600x1000/171717/e8e3d7?text=${encodeURIComponent(label)}`;
+
+
+/* =========================================================
+   DRUIDZ.SE (current role)
+   ========================================================= */
+
+const druidz = {
+  site: "https://druidz.se",
+  articles: "https://druidz.se/author/hein/",
+  videos: "https://druidz.se/tag/kyaw-myoe-hein/",
+  // Replace with a screenshot of your Druidz author page, e.g.
+  // import druidzShot from "../pics/druidz.jpg";  ->  shot: druidzShot
+  shot: dz
+};
 
 
 function getYouTubeEmbedUrl(url) {
@@ -87,7 +115,52 @@ function getYouTubeEmbedUrl(url) {
    PROJECT DATA
    ========================================================= */
 
+/*
+  To use your real card game art, import the files at the top, e.g.
+    import cardKey from "../pics/cardgame-key.jpg";
+  then replace each PLACEHOLDER(...) below with the imported variable.
+  Every image here opens in the lightbox, so you can add as many as you like.
+*/
+
+const cardGame = {
+  id: "burmese-card-game",
+  highlight: true,
+  title: "Card Htet Kya Soh!",          // <- rename to your game's real title
+  subtitle: "Card Game · WebGL · Burmese Traditional Style",
+  role: "Main Artist",
+
+  description:
+    "A WebGL card game built around traditional Burmese art. I was the main artist and created the full visual identity of the game: the card illustrations, character art, user interface, and backgrounds.",
+
+  responsibilities: [
+    "Card illustrations",
+    "Character art",
+    "Interface and UI design",
+    "Backgrounds and environment art",
+    "Overall visual direction in traditional Burmese style"
+  ],
+
+  images: [
+    { src: CHKS,        alt: "Card game key art" },
+    { src: CA1,                alt: "Card illustration 01" },
+    { src: CA2,                alt: "Card illustration 02" },
+    { src: manga1,           alt: "Character artwork 01" },
+    { src: manga2,           alt: "Character artwork 02" },
+    { src: interf,             alt: "Game interface design" },
+    { src: bgcardgame,             alt: "Background artwork" },
+    { src: cardss,         alt: "In-game screenshot" }
+  ],
+
+  // Add a playable link or trailer when ready:
+  // links: [{ label: "PLAY THE GAME", url: "https://cardhtetkyasoh.vercel.app/" }],
+  youtube: "https://youtu.be/YHSmi0mlkIo",
+  links: [{ label: "PLAY THE GAME", url: "https://cardhtetkyasoh.vercel.app/" }]
+};
+
+
 const projects = [
+  cardGame,
+
   {
     id: "stone-haven",
     title: "For Stone Haven",
@@ -171,10 +244,10 @@ const projects = [
     title: "Find Yourself",
     subtitle: "Puzzle · Pixel Art · Game Jam",
     role: "2D Pixel Artist",
-    award: "4th Place",
+    award: "1st Place in 2 categories",
 
     description:
-      "A game-jam project where I created the main character sprites and animation, background art, and environment assets. Got fourth place in the game jam competition. Used Aseprite and Ibis Paint for pixel art and animation.",
+      "A game-jam project where I created the main character sprites and animation, background art, and environment assets. Got 1st place in the game jam competition in 2 categories. Used Aseprite and Ibis Paint for pixel art and animation.",
 
     responsibilities: [
       "Main character sprites and animation",
@@ -245,10 +318,10 @@ const projects = [
     title: "Lumia",
     subtitle: "Horror · Pixel Art · Game Jam",
     role: "2D Pixel Artist & Game Designer",
-    award: "5th Place",
+    award: "4th Place",
 
     description:
-      "A short horror game-jam project combining pixel character art, animation, and story design. Used aseprite for pixel art and animation. Got fifth place in the game jam competition.",
+      "A short horror game-jam project combining pixel character art, animation, and story design. Used aseprite for pixel art and animation. Got fourth place in the game jam competition.",
 
     responsibilities: [
       "Character sprites and animation",
@@ -411,6 +484,18 @@ const aboutArtworks = [
     src: artwork3,
     alt: "Placeholder for artwork 03",
     title: "ARTWORK 03"
+  },
+
+  {
+    src: artwork4,
+    alt: "Placeholder for artwork 04",
+    title: "ARTWORK 04"
+  },
+
+  {
+    src: artwork5,
+    alt: "Placeholder for artwork 05",
+    title: "ARTWORK 05"
   }
 ];
 
@@ -496,14 +581,20 @@ function App() {
     Magnitude 7.7 remains in the archive.
   */
 
+  const highlights = projects.filter(
+    (project) => project.highlight
+  );
+
+
   const featured = projects.filter(
-    (project) => project.featured
+    (project) => project.featured && !project.highlight
   );
 
 
   const core = projects.filter(
     (project) =>
       !project.featured &&
+      !project.highlight &&
       [
         "corecell",
         "find-yourself"
@@ -514,6 +605,7 @@ function App() {
   const archive = projects.filter(
     (project) =>
       !project.featured &&
+      !project.highlight &&
       ![
         "corecell",
         "find-yourself"
@@ -563,6 +655,12 @@ function App() {
               : "nav-links"
           }
         >
+
+          <button
+            onClick={() => scrollTo("latest")}
+          >
+            LATEST
+          </button>
 
           <button
             onClick={() => scrollTo("work")}
@@ -663,6 +761,139 @@ function App() {
           <div className="scroll-mark">
             <span>SCROLL</span>
             <div />
+          </div>
+
+        </section>
+
+
+        {/* ===================================================
+            LATEST HIGHLIGHTS
+            =================================================== */}
+
+        <section
+          id="latest"
+          className="section highlights-section"
+        >
+
+          <div className="section-heading">
+
+            <div>
+
+              <p className="eyebrow">
+                LATEST HIGHLIGHTS
+              </p>
+
+              <h2>
+                WHAT I'M <em>DOING NOW</em>
+              </h2>
+
+            </div>
+
+            <p className="section-note">
+              My current role as a game reviewer and writer,
+              and the card game I'm building as lead artist.
+            </p>
+
+          </div>
+
+
+          <div className="highlight-grid">
+
+            {/* CARD GAME */}
+
+            {highlights.map((project) => (
+
+              <ProjectCard
+                key={project.id}
+                project={project}
+                highlight
+                onOpen={openProject}
+              />
+
+            ))}
+
+
+            {/* DRUIDZ.SE */}
+
+            <article className="druidz-panel">
+
+              <div className="druidz-shot">
+
+                <img
+                  src={druidz.shot}
+                  alt="Druidz.se author page"
+                />
+
+              </div>
+
+
+              <div className="druidz-body">
+
+                <p className="eyebrow">
+                  CURRENT ROLE
+                </p>
+
+                <h3>
+                  DRUIDZ<em>.SE</em>
+                </h3>
+
+                <h4>
+                  Game Reviewer · Writer · Editor
+                </h4>
+
+                <p>
+                  I review games commissioned by Druidz,
+                  write and edit articles, and represent
+                  the company in Thailand.
+                </p>
+
+                <ul>
+                  <li>Reviewing commissioned games</li>
+                  <li>Writing and editing articles</li>
+                  <li>YouTube video content</li>
+                  <li>Representing Druidz in Thailand</li>
+                </ul>
+
+                <div className="druidz-links">
+
+                  <a
+                    className="primary-btn"
+                    href={druidz.articles}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Newspaper size={15} />
+                    MY ARTICLES
+                    <ExternalLink size={14} />
+                  </a>
+
+                  <a
+                    className="ghost-btn"
+                    href={druidz.videos}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Play size={15} />
+                    MY VIDEOS
+                    <ExternalLink size={14} />
+                  </a>
+
+                </div>
+
+                <a
+                  className="druidz-site"
+                  href={druidz.site}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  VISIT DRUIDZ.SE
+                  <ExternalLink size={12} />
+                </a>
+
+              </div>
+
+            </article>
+
           </div>
 
         </section>
@@ -977,6 +1208,76 @@ function App() {
           <article className="experience-card">
 
             <div className="experience-year">
+              NOW
+            </div>
+
+
+            <div>
+
+              <p className="eyebrow">
+                CURRENT ROLE
+              </p>
+
+              <h3>
+                DRUIDZ.SE
+              </h3>
+
+              <h4>
+                Game Reviewer, Writer & Editor
+              </h4>
+
+              <p>
+                Reviewing commissioned games and
+                representing the company in Thailand.
+              </p>
+
+
+              <ul>
+
+                <li>
+                  Write and edit game articles for the site.
+                </li>
+
+                <li>
+                  Review commissioned games and appear in
+                  YouTube video content.
+                </li>
+
+                <li>
+                  Represent Druidz in Thailand.
+                </li>
+
+              </ul>
+
+
+              <div className="exp-links">
+
+                <a
+                  href={druidz.articles}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  ARTICLES <ExternalLink size={12} />
+                </a>
+
+                <a
+                  href={druidz.videos}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  VIDEOS <ExternalLink size={12} />
+                </a>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <article className="experience-card">
+
+            <div className="experience-year">
               2025
             </div>
 
@@ -1060,10 +1361,12 @@ function App() {
               AWARDS
             </p>
 
+            <div> </div>
+
             <div>
 
               <strong>
-                4th Place
+                1st Place in 2 Categories
               </strong>
 
               <span>
@@ -1072,11 +1375,13 @@ function App() {
 
             </div>
 
+            <div></div>
+
 
             <div>
 
               <strong>
-                5th Place
+                4th Place
               </strong>
 
               <span>
@@ -1102,9 +1407,7 @@ function App() {
           <div className="contact-art">
 
             <img
-              src={PLACEHOLDER(
-                "CONTACT BACKGROUND ART"
-              )}
+              src={KMHBC}
               alt="Contact background artwork"
             />
 
@@ -1124,7 +1427,7 @@ function App() {
             <h2>
               LET'S CREATE
               <br />
-              <em>SOMETHING.</em>
+              <em>SOMETHING WITH HEIN.</em>
             </h2>
 
 
@@ -1167,12 +1470,11 @@ function App() {
 
             <a
               className="resume-btn"
-              href="/Kyaw_Myoe_Hein_Game_Resume.pdf"
-              target="_blank"
+              href="../pdfs/Kyaw_Myoe_Hein_Game2026.pdf"
               rel="noreferrer"
             >
 
-              VIEW RESUME
+              DOWNLOAD RESUME
 
               <ExternalLink size={16} />
 
@@ -1259,6 +1561,7 @@ function ProjectCard({
   project,
   large,
   compact,
+  highlight,
   onOpen
 }) {
 
@@ -1269,6 +1572,8 @@ function ProjectCard({
         large ? "large" : ""
       } ${
         compact ? "compact" : ""
+      } ${
+        highlight ? "highlight" : ""
       }`}
       onClick={() => onOpen(project)}
     >
@@ -1282,6 +1587,13 @@ function ProjectCard({
 
 
         <div className="project-image-shade" />
+
+
+        {highlight && (
+          <span className="highlight-tag">
+            NEW · WEBGL
+          </span>
+        )}
 
 
         <div className="project-open">
@@ -1403,6 +1715,30 @@ function ProjectModal({
           <p>
             {project.description}
           </p>
+
+
+          {project.links && project.links.length > 0 && (
+
+            <div className="modal-links">
+
+              {project.links.map((link) => (
+
+                <a
+                  key={link.url}
+                  className="primary-btn"
+                  href={link.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {link.label}
+                  <ExternalLink size={14} />
+                </a>
+
+              ))}
+
+            </div>
+
+          )}
 
         </div>
 
