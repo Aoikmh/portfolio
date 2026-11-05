@@ -1470,13 +1470,13 @@ function App() {
 
             <a
               className="resume-btn"
-              href="/pdfs/Kyaw_Myoe_Hein_Game2026.pdf"
+              href="/Kyaw_Myoe_Hein2026.pdf"
               download="Kyaw_Myoe_Hein_Resume.pdf"
             >
 
               DOWNLOAD RESUME
 
-              <Download size={16} />
+              <ExternalLink size={16} />
 
             </a>
 
