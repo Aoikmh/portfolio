@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
   ArrowDown, ArrowLeft, ArrowRight, ExternalLink, Mail, Linkedin,
-  Phone, Play, X, Maximize2, Palette, Box, Map, Gamepad2, Newspaper
+  Phone, Play, X, Maximize2, Palette, Box, Map, Gamepad2, Newspaper, Download
 } from "lucide-react";
 
 import CHKS from "../pics/CHKS.jpg";
@@ -1470,13 +1470,13 @@ function App() {
 
             <a
               className="resume-btn"
-              href="../pdfs/Kyaw_Myoe_Hein_Game2026.pdf"
-              rel="noreferrer"
+              href="/pdfs/Kyaw_Myoe_Hein_Game2026.pdf"
+              download="Kyaw_Myoe_Hein_Resume.pdf"
             >
 
               DOWNLOAD RESUME
 
-              <ExternalLink size={16} />
+              <Download size={16} />
 
             </a>
 
