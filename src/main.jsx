@@ -18,6 +18,7 @@ import KMHBC from "../pics/KMHBC.jpg";
 import monitor from "../pics/monitor.jpg";
 import saber from "../pics/saber.jpg";
 import horror from "../pics/horror.jpg";
+import certificate from "../pics/certificate.jpg";
 
 
 import stoneHavenHero from "../pics/StoneHaven.jpg";
@@ -144,12 +145,12 @@ const cardGame = {
   ],
 
   images: [
+    { src: certificate,             alt: "Certificate" },
     { src: CHKS,        alt: "Card game key art" },
     { src: CA1,                alt: "Card illustration 01" },
     { src: CA2,                alt: "Card illustration 02" },
     { src: manga1,           alt: "Character artwork 01" },
     { src: manga2,           alt: "Character artwork 02" },
-    { src: interf,             alt: "Game interface design" },
     { src: bgcardgame,             alt: "Background artwork" },
     { src: cardss,         alt: "In-game screenshot" }
   ],
