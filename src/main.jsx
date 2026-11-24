@@ -145,8 +145,8 @@ const cardGame = {
   ],
 
   images: [
-    { src: certificate,             alt: "Certificate" },
     { src: CHKS,        alt: "Card game key art" },
+    { src: certificate,             alt: "Certificate" },
     { src: CA1,                alt: "Card illustration 01" },
     { src: CA2,                alt: "Card illustration 02" },
     { src: manga1,           alt: "Character artwork 01" },
