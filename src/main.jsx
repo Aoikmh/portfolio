@@ -15,6 +15,9 @@ import bgcardgame from "../pics/bgcardgame.jpg";
 import cardss from "../pics/cardingamess.png";
 import dz from "../pics/dz.png";
 import KMHBC from "../pics/KMHBC.jpg";
+import monitor from "../pics/monitor.jpg";
+import saber from "../pics/saber.jpg";
+import horror from "../pics/horror.jpg";
 
 
 import stoneHavenHero from "../pics/StoneHaven.jpg";
@@ -125,12 +128,12 @@ function getYouTubeEmbedUrl(url) {
 const cardGame = {
   id: "burmese-card-game",
   highlight: true,
-  title: "Card Htet Kya Soh!",          // <- rename to your game's real title
+  title: "Card Htet Kya Soh! Best Creative Concept Winner",          // <- rename to your game's real title
   subtitle: "Card Game · WebGL · Burmese Traditional Style",
   role: "Main Artist",
 
   description:
-    "A WebGL card game built around traditional Burmese art. I was the main artist and created the full visual identity of the game: the card illustrations, character art, user interface, and backgrounds.",
+    "A WebGL card game built around traditional Burmese art. I was the main artist and created the full visual identity of the game: the card illustrations, character art, user interface, and backgrounds. Won Best Creative Concept Award in Digit7 Game Jam.",
 
   responsibilities: [
     "Card illustrations",
@@ -493,9 +496,21 @@ const aboutArtworks = [
   },
 
   {
-    src: artwork5,
+    src: saber,
     alt: "Placeholder for artwork 05",
-    title: "ARTWORK 05"
+    title: "ARTWORK 06"
+  },
+
+  {
+    src: monitor,
+    alt: "Placeholder for artwork 05",
+    title: "ARTWORK 07"
+  },
+
+  {
+    src: horror,
+    alt: "Placeholder for artwork 05",
+    title: "ARTWORK 08"
   }
 ];
 
